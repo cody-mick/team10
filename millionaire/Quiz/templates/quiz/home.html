@@ -3,17 +3,24 @@
 {% block content %}
 {% load static %}
 <div class="container ">
-<h1>Welcome to DataFlair Quiz</h1>
- 
-<div align="right " id="displaytimer"><b>Timer: 0 seconds</b></div>
- 
- <form method='post' action=''>
-    {% csrf_token %}
-    {% for q  in questions%}
-    <div class="form-group">
-      <label for="question">{{q.question}}</label>
-    </div>
-    <div class="form-check">
+    <h1>WHO WANTS TO BE A MILLIONAIRE</h1>
+    
+    <div align="right " id="displaytimer"><b>Timer: 0 seconds</b></div>
+    <button type="button" class="btn btn-primary">Pause Timer</button>
+    
+    
+    <form method='post' action=''>
+        {% csrf_token %}
+        {% for q  in questions%}
+        <div class="form-group">
+            <label for="question">{{q.question}}</label>
+        </div>
+        <div>
+            <label for="point-value">${{q.point_value}}</label>
+        </div>
+        <button type="button" class="btn btn-primary">50/50</button>
+        <button type="button" class="btn btn-primary">Phone a Friend</button>
+        <div class="form-check">
         <div class="form-check">
             <input class="form-check-input" type="radio" name="{{q.question}}" id="gridRadios1" value="option1" checked>
             <label class="form-check-label" for="gridRadios1">
