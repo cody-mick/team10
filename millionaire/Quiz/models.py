@@ -1,4 +1,5 @@
 from django.db import models
+from sqlalchemy import null
 
 # Create your models here.
 class QuesModel(models.Model):
@@ -10,6 +11,7 @@ class QuesModel(models.Model):
     ans = models.CharField(max_length=200,null=True)
     hint = models.CharField(max_length=400, null=True)
     point_value = models.IntegerField(max_length=7, null=False, default=0)
+    timer = models.IntegerField(max_length=3, null=True)
     
     def __str__(self):
         return self.question
