@@ -1,28 +1,40 @@
 # Overview
 
-{Important!  Do not say in this section that this is college assignment.}
+This project was created for the purpose of helping educators find fun ways to
+review material. We worked as a team to design a game that is customizable, fun,
+and competitive. 
 
-{Provide a description of your team project.  Describe how to use the software.}
+The software is like Who Wants to be a Millionaire TV game show. You quiz one
+person or team at a time and see who can get the highest points. The first few 
+questions are timed, and then after question 7 the questions get harder so there
+is no timer. There are two options for hints (phone a friend and 50/50)
+and each team only gets 2 of each hint. 50/50 removes half of the answers to 
+narrow down the answer options.
+
+To start the program..... 
 
 # Development Environment
 
-{Describe the tools that you used to develop the software}
+This software was written with Visual Studio Code and SQLite Studio 3.3.3.
 
-{Describe the programming language that you used and any libraries.}
+The app was developed using Python Django and model libraries. 
 
 # Collaborators
 
-{Provide a list of everyone on your team}
+Brayden Jones
+Cody Mickelsen
+Tianna DeSpain
 
 # Useful Websites
 
-{Make a list of websites that you found helpful in this project}
-* [Web Site Name](http://url.link.goes.here)
-* [Web Site Name](http://url.link.goes.here)
+* [Soundboard - Millionaire Sounds](https://www.soundboard.com/sb/onemilliondollars)
+* [Youtube - CS Dojo](https://www.youtube.com/watch?v=h7rvyDK70FA&list=PLBZBJbE_rGRXBhJNdKbN7IUy-ctlOFxA1&index=2)
+* [Django Documentation](https://docs.djangoproject.com/en/4.0/topics/db/models/)
+* [Data Flair - Django Tutorial](https://data-flair.training/blogs/create-quiz-application-python-django/)
+* [StackOverflow - timer implementation](https://stackoverflow.com/questions/10603409/how-to-implement-countdown-timer-in-django)
 
 # Future Work
 
-{Make a list of things that you need to fix, improve, and add in the future.}
-* Item 1
-* Item 2
-* Item 3
+* Create a High Score List
+* Animate Lights to imitate the gameshow
+* Make app loop to allow for mulitiple teams in the same run of play
