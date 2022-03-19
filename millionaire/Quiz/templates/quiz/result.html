@@ -1,21 +1,26 @@
 {% extends 'Quiz/dependencies.html' %}
  
 {% block content %}
- 
+ <style>
+     .img-top{
+         width: 100%;
+     }
+     .card{
+         background-color: #050543;
+     }
+ </style>
 <div class="container ">
         
     <div class="card-columns" style="padding: 10px; margin: 20px;">
-        <div class="card" align="centre " style="width: 32rem; border:5px black solid">
-            <img class="card-img-top" src="http://kmit.in/emagazine/wp-content/uploads/2018/02/karnataka-results.jpg" alt="Card image cap">
+        <div class="card" align="centre " style="width: 25em">
+            <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Money_Cash.jpg/800px-Money_Cash.jpg?20100914121731" alt="Card image cap">
             <div class="card-body">
-                <h5 class="card-title">Score: {{score}}</h5>
+                <h3 class="card-title">Total Money Earned: ${{score}}</h3>
  
-                <p class="card-text">Time Taken: {{time}} seconds</p>
                 <p class="card-text">Correct answers: {{correct}}</p>
                 <p class="card-text">Incorrect answers: {{wrong}}</p>
                 <p class="card-text">Total questions: {{total}}</p>
-                <h5>All the best for next quiz!</h5>
-            </div>
+              </div>
         </div>
     </div>
  
