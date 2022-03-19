@@ -17,7 +17,6 @@ def home(request):
         for q in questions:
             total+=1
             print(request.POST.get(q.question))
-            print("YOU ARE HERE")
             print(q.ans)
             print()
             if q.ans == request.POST.get(q.question):

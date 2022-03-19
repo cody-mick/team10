@@ -11,7 +11,7 @@
     
     <form method='post' action=''>
         {% csrf_token %}
-        {% for q  in questions%}
+        {% for q in questions %}
         <div class="form-group">
             <label for="question">{{q.question}}</label>
         </div>
@@ -46,8 +46,8 @@
             </label>
         </div>
         <br>
-    </div>    
-    {% endfor %}
+    </div>  
+    {% endfor %}  
     <input id='timer' type='hidden' name="timer" value="">
     <br>
     <button type="submit" class="btn btn-primary">Submit</button>
