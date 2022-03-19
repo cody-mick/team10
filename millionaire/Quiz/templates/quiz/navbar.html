@@ -1,14 +1,28 @@
 {% load static %}
  
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Balthazar&display=swap');
+
   .greet{
     font-size: 18px;
     color: #fff;
     margin-right: 20px;
   }
+
+  .navbar {
+    background-color: #4D96BF;
+    font-size: 1.5rem;
+  }
+
+  body {
+    font-family: 'Balthazar', serif;
+    font-size: 1.5rem;
+    background-color: #050543;
+    
+  }
 </style>
  
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -36,7 +50,7 @@
     </ul>
   </div>
  
-  <span class="greet">Hello, {{request.user}}</span>
+  <span class="greet">Hello, Contestant</span>
   <span ><a  class="greet" href="{% url 'logout' %}">Logout</a></span>
  
 </nav>
