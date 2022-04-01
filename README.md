@@ -1,28 +1,31 @@
 # Overview
 
-{Important!  Do not say in this section that this is college assignment.}
-
-{Provide a description of your team project.  Describe how to use the software.}
+This is a Who Wants to Be a Millionaire game designed for elementary school children as an education software. The game is straightforward, you answer each question, and if you get the answer correct, you move on in the game until you reach $1,000,000. If you get a question wrong, you lose, and the game is over.
 
 # Development Environment
 
-{Describe the tools that you used to develop the software}
+This software is mainly developed using HTML and CSS, with a backend designed using the Django Framework in Python.
 
-{Describe the programming language that you used and any libraries.}
+The main language used is Python, with web views being rendered with HTML and CSS
 
 # Collaborators
 
-{Provide a list of everyone on your team}
+Cody Mickelsen
+Tianna Despain
+Brayden Jones
 
 # Useful Websites
 
 {Make a list of websites that you found helpful in this project}
-* [Web Site Name](http://url.link.goes.here)
-* [Web Site Name](http://url.link.goes.here)
+
+- [Stack Overflow](http://url.link.goes.here)
+- [Django Docs](http://url.link.goes.here)
+- [Data Flair Quiz Tutorial]()
 
 # Future Work
 
 {Make a list of things that you need to fix, improve, and add in the future.}
-* Item 1
-* Item 2
-* Item 3
+
+- Item 1
+- Item 2
+- Item 3

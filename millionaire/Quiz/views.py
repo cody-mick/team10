@@ -3,41 +3,39 @@ from django.contrib.auth import login,logout,authenticate
 from .forms import *
 from .models import *
 from django.http import HttpResponse
+from django.core.paginator import Paginator
+    
 
 # Create your views here.
 def home(request):
     if request.method == 'POST':
         print(request.POST)
         questions=QuesModel.objects.all()
-        print(questions)
+        print(type(questions))
         score=0
         wrong=0
         correct=0
         total=0
         for q in questions:
-            total+=1
-            print(request.POST.get(q.question))
-            print(q.ans)
-            print()
-            if q.ans == request.POST.get(q.question):
-                score+=q.point_value
-                correct+=1
-            else:
-                wrong+=1
+             total+=1
+             if q.ans == request.POST.get(q.question):
+                 score=q.point_value
+                 correct+=1
+             else:
+                 wrong+=1
         context = {
             'score':score,
-            'time': request.POST.get('timer'),
             'correct':correct,
             'wrong':wrong,
             'total':total
         }
         return render(request,'Quiz/result.html',context)
     else:
-        questions=QuesModel.objects.all()
-        context = {
-            'questions':questions
-        }
-        return render(request,'Quiz/home.html',context)
+        question_list = QuesModel.objects.all()
+        paginator = Paginator(question_list, 1) # Show one question per page
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        return render(request, 'Quiz/home.html', {'page_obj': page_obj})
  
 def addQuestion(request):    
     if request.user.is_staff:
