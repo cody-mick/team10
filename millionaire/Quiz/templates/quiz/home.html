@@ -49,8 +49,16 @@
 		<div>
 			<label for="point-value">${{question.point_value}}</label>
 		</div>
-		<button type="button" class="btn btn-primary">50/50</button>
-		<button type="button" class="btn btn-primary">Phone a Friend</button>
+		<button
+			type="button"
+			action="/fifty_fifty_lifeline"
+			class="btn btn-primary"
+		>
+			50/50
+		</button>
+		<button type="button" action="/phone_friend" class="btn btn-primary">
+			Phone a Friend
+		</button>
 		<div class="form-check">
 			<div class="form-check">
 				<input
@@ -132,11 +140,16 @@
 		console.log(timer.textContent);
 		const inputtag = document.getElementById("timer");
 
-		t = 0;
+		t = 80;
 		setInterval(() => {
-			t += 1;
-			timer.innerHTML = "<b>Timer: " + t + " seconds</b>";
-			inputtag.value = t;
+			if (t > 0) {
+				t -= 1;
+				timer.innerHTML = "<b>Timer: " + t + " seconds</b>";
+				inputtag.value = t;
+			} else {
+				timer.innerHTML = "<b>Timer: Times Up!</b>";
+				inputtag.value = t;
+			}
 		}, 1000);
 	</script>
 	{% endblock script %}
