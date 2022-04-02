@@ -26,5 +26,7 @@ urlpatterns = [
     path('login/', loginPage,name='login'),
     path('logout/', logoutPage,name='logout'),
     path('register/', registerPage,name='register'),
+    path('fifty_fifty_lifeline/', fifty_fifty_lifeline, name='fifty_fifty_lifeline'),
+    path('phone_friend/', phone_friend, name='phone_friend')
 ]
 urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

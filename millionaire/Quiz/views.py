@@ -1,33 +1,33 @@
 from django.shortcuts import redirect, render
-from django.contrib.auth import login,logout,authenticate
+from django.contrib.auth import login, logout, authenticate
 from .forms import *
 from .models import *
 from django.http import HttpResponse
 from django.core.paginator import Paginator
-    
+
 
 # Create your views here.
 def home(request):
     question_list = QuesModel.objects.all()
-    paginator = Paginator(question_list, 1) # Show one question per page
-    page_number = request.GET.get('page')
+    paginator = Paginator(question_list, 1)  # Show one question per page
+    page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
     # Get current question and evaluate user input for correct answer
-    
-    if request.method == 'POST':
+
+    if request.method == "POST":
         score = 0
         page_question = paginator.page(1).object_list
-        print(page_question)
+        context = {}
         for q in page_question:
-            print(q.ans)
             print(request.POST.get(q.question))
             if q.ans == request.POST.get(q.question):
-                score=q.point_value
-            
+                score = q.point_value
+
             print(score)
-            return render(request, 'Quiz/home.html', {'page_obj': page_obj})
-        
+            return render(request, "Quiz/result.html", context)
+    else:
+        return render(request, "Quiz/home.html", {"page_obj": page_obj})
     # if request.method == 'POST':
     #     print(request.POST)
     #     questions=QuesModel.objects.all()
@@ -51,49 +51,69 @@ def home(request):
     #     }
     #     return render(request,'Quiz/result.html',context)
     # else:
- 
-def addQuestion(request):    
+    #     questions = QuesModel.objects.all()
+    #     context = {
+    #         'question': questions
+    #     }
+    #     return render(request, 'Quiz/home.html', context)
+
+
+def addQuestion(request):
     if request.user.is_staff:
-        form=addQuestionform()
-        if(request.method=='POST'):
-            form=addQuestionform(request.POST)
-            if(form.is_valid()):
+        form = addQuestionform()
+        if request.method == "POST":
+            form = addQuestionform(request.POST)
+            if form.is_valid():
                 form.save()
-                return redirect('/')
-        context={'form':form}
-        return render(request,'Quiz/addQuestion.html',context)
-    else: 
-        return redirect('home') 
- 
+                return redirect("/")
+        context = {"form": form}
+        return render(request, "Quiz/addQuestion.html", context)
+    else:
+        return redirect("home")
+
+
 def registerPage(request):
     if request.user.is_authenticated:
-        return redirect('home') 
-    else: 
+        return redirect("home")
+    else:
         form = createuserform()
-        if request.method=='POST':
+        if request.method == "POST":
             form = createuserform(request.POST)
-            if form.is_valid() :
-                user=form.save()
-                return redirect('login')
-        context={
-            'form':form,
+            if form.is_valid():
+                user = form.save()
+                return redirect("login")
+        context = {
+            "form": form,
         }
-        return render(request,'Quiz/register.html',context)
- 
+        return render(request, "Quiz/register.html", context)
+
+
 def loginPage(request):
     if request.user.is_authenticated:
-        return redirect('home')
+        return redirect("home")
     else:
-       if request.method=="POST":
-        username=request.POST.get('username')
-        password=request.POST.get('password')
-        user=authenticate(request,username=username,password=password)
-        if user is not None:
-            login(request,user)
-            return redirect('/')
-       context={}
-       return render(request,'Quiz/login.html',context)
- 
+        if request.method == "POST":
+            username = request.POST.get("username")
+            password = request.POST.get("password")
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect("/")
+        context = {}
+        return render(request, "Quiz/login.html", context)
+
+
 def logoutPage(request):
     logout(request)
-    return redirect('/')
+    return redirect("/")
+
+
+# phone a friend function
+def phone_friend(request):
+    print("hint")
+    return HttpResponse("""<html><script>console.log("Hi!")</script></html>""")
+
+
+# 50/50 function
+def fifty_fifty_lifeline(request):
+    print("50_50")
