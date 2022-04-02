@@ -40,7 +40,7 @@
 	<h1>WHO WANTS TO BE A MILLIONAIRE</h1>
 
 	<div align="right " id="displaytimer"><b>Timer: 0 seconds</b></div>
-	<button id="pause-game" onclick="togglePause();">Pause</button>
+	<button id="pause-game" class="btn btn-primary" onclick="togglePause();">Pause</button>
 
 	{% for question in page_obj %}
 	<form method="post" action="">
@@ -90,6 +90,7 @@
 		</div>
 		<br />
 		<button type="submit" class="btn btn-primary">Lock In Answer</button>
+
 		{% endfor %}
 		<imput type="hidden" id="timer" name="timer" value=""></imput>
 		<div class="pagination">
@@ -113,7 +114,7 @@
 		console.log(timer.textContent);
 		const inputtag = document.getElementById("timer");
 		timer.isPaused = false;
-		t = 8;
+		t = 60;
 		setInterval(() => {
 			if (t > 0 && !timer.isPaused) {
 				t -= 1;
