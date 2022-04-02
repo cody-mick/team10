@@ -20,14 +20,16 @@ def home(request):
         page_question = paginator.page(1).object_list
         print(page_question)
         for q in page_question:
-            print(q.ans)
-            print(request.POST.get(q.question))
+            # print(q.ans)
+            # print(q.point_value)
+            # print(request.POST.get(q.question))
+            # print(q)
             if q.ans == request.POST.get(q.question):
                 score=q.point_value
-            
-            print(score)
-            return render(request, 'Quiz/home.html', {'page_obj': page_obj})
         
+            return render(request, 'Quiz/home.html', {'page_obj': page_obj})
+    else:
+        return render(request, 'Quiz/home.html', {'page_obj': page_obj})
     # if request.method == 'POST':
     #     print(request.POST)
     #     questions=QuesModel.objects.all()
@@ -51,6 +53,11 @@ def home(request):
     #     }
     #     return render(request,'Quiz/result.html',context)
     # else:
+    #     questions = QuesModel.objects.all()
+    #     context = {
+    #         'question': questions
+    #     }
+    #     return render(request, 'Quiz/home.html', context)
  
 def addQuestion(request):    
     if request.user.is_staff:
