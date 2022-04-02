@@ -3,42 +3,54 @@ from django.contrib.auth import login,logout,authenticate
 from .forms import *
 from .models import *
 from django.http import HttpResponse
+from django.core.paginator import Paginator
+    
 
 # Create your views here.
 def home(request):
+    question_list = QuesModel.objects.all()
+    paginator = Paginator(question_list, 1) # Show one question per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    # Get current question and evaluate user input for correct answer
+    
     if request.method == 'POST':
-        print(request.POST)
-        questions=QuesModel.objects.all()
-        print(questions)
-        score=0
-        wrong=0
-        correct=0
-        total=0
-        for q in questions:
-            total+=1
-            print(request.POST.get(q.question))
-            print("YOU ARE HERE")
+        score = 0
+        page_question = paginator.page(1).object_list
+        print(page_question)
+        for q in page_question:
             print(q.ans)
-            print()
+            print(request.POST.get(q.question))
             if q.ans == request.POST.get(q.question):
-                score+=q.point_value
-                correct+=1
-            else:
-                wrong+=1
-        context = {
-            'score':score,
-            'time': request.POST.get('timer'),
-            'correct':correct,
-            'wrong':wrong,
-            'total':total
-        }
-        return render(request,'Quiz/result.html',context)
-    else:
-        questions=QuesModel.objects.all()
-        context = {
-            'questions':questions
-        }
-        return render(request,'Quiz/home.html',context)
+                score=q.point_value
+            
+            print(score)
+            return render(request, 'Quiz/home.html', {'page_obj': page_obj})
+        
+    # if request.method == 'POST':
+    #     print(request.POST)
+    #     questions=QuesModel.objects.all()
+    #     print(type(questions))
+    #     score=0
+    #     wrong=0
+    #     correct=0
+    #     total=0
+    #     for q in questions:
+    #          total+=1
+    #          if q.ans == request.POST.get(q.question):
+    #              score=q.point_value
+    #              correct+=1
+    #          else:
+    #              wrong+=1
+    #     context = {
+    #         'score':score,
+    #         'correct':correct,
+    #         'wrong':wrong,
+    #         'total':total
+    #     }
+    #     return render(request,'Quiz/result.html',context)
+    # else:
  
 def addQuestion(request):    
     if request.user.is_staff:

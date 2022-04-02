@@ -1,109 +1,110 @@
-{% extends 'Quiz/dependencies.html' %}
+{% extends 'Quiz/dependencies.html' %} {% block content %} {% load static %}
+<div class="container">
+	<h1>WHO WANTS TO BE A MILLIONAIRE</h1>
 
-{% block content %}
-{% load static %}
-<style>
-    .btn {
-        background-color: #4D96BF;
-        border-color: #a3e6ff;
-        color: #d4f1fd;
-        margin: auto;
-        float: right;
-        margin-left: 5px;
-    }
+	<!-- <div align="right " id="displaytimer"><b>Timer: 0 seconds</b></div>
+	<button type="button" class="btn btn-primary">Pause Timer</button> -->
 
-    .btn:hover{
-        background-color: #7631F0;
-    }
-    .points{
-        float: right;
-    }
+	{% for question in page_obj %}
+	<form method="post" action="">
+		{% csrf_token %}
+		<div class="form-group">
+			<label for="question">{{question}}</label>
+		</div>
+		<div>
+			<label for="point-value">${{question.point_value}}</label>
+		</div>
+		<button type="button" class="btn btn-primary">50/50</button>
+		<button type="button" class="btn btn-primary">Phone a Friend</button>
+		<div class="form-check">
+			<div class="form-check">
+				<input
+					class="form-check-input"
+					type="radio"
+					name="{{q.question}}"
+					id="gridRadios1"
+					value="option1"
+				/>
+				<label class="form-check-label" for="gridRadios1">
+					{{question.op1}}
+				</label>
+			</div>
+			<div class="form-check">
+				<input
+					class="form-check-input"
+					type="radio"
+					name="{{q.question}}"
+					id="gridRadios2"
+					value="option2"
+				/>
+				<label class="form-check-label" for="gridRadios2">
+					{{question.op2}}
+				</label>
+			</div>
+			<div class="form-check">
+				<input
+					class="form-check-input"
+					type="radio"
+					name="{{q.question}}"
+					id="gridRadios1"
+					value="option3"
+				/>
+				<label class="form-check-label" for="gridRadios1">
+					{{question.op3}}
+				</label>
+			</div>
+			<div class="form-check">
+				<input
+					class="form-check-input"
+					type="radio"
+					name="{{q.question}}"
+					id="gridRadios2"
+					value="option4"
+				/>
+				<label class="form-check-label" for="gridRadios2">
+					{{question.op4}}
+				</label>
+			</div>
+			<br />
+		</div>
+		<input id="timer" type="hidden" name="timer" value="" />
+		<br />
+		<button type="submit" class="btn btn-primary">Lock In Answer</button>
+		{% endfor %}
+		<div class="pagination">
+			<span class="step-links">
+				{% if page_obj.has_previous %}
+				<a
+					class="btn btn-primary"
+					href="?page={{ page_obj.previous_page_number }}"
+					>Previous</a
+				>
+				{% endif %}
+				<span class="current">
+					Question {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+				</span>
+				{% if page_obj.has_next %}
+				<a class="btn btn-primary" href="?page={{ page_obj.next_page_number }}"
+					>Next</a
+				>
+				{% endif %}
+			</span>
+		</div>
+	</form>
+	{% block script %}
+	<script>
+		console.log("hello world");
+		const timer = document.getElementById("displaytimer");
+		console.log(timer.textContent);
+		const inputtag = document.getElementById("timer");
 
-    .form-group{
-        padding: 0%;
-        margin: 0;
-    }
-    .submit{
-        float:none;
-        padding:  15px 40px;
-        background-color: #BD8E24;
-        border-color: #FFE884;
-        color:#050543;
-        font-weight: 900;
-        font-size: x-large;
-    }
-    .form-check-input {
-        accent-color: #BD8E24;
-    }
-    
-</style>
-<div class="container ">
-    <h1 class="title">WHO WANTS TO BE A MILLIONAIRE</h1>
-
-    <div align="right " id="displaytimer"><b>Timer: 0 seconds</b></div>
-    <button type="button" class="btn btn-primary">Pause Timer</button>
-
-
-    <form method='post' action=''>
-        {% csrf_token %}
-        {% for q  in questions%}
-        <div class="form-group">
-            <label for="question">{{q.question}}</label>
-        </div>
-        <div class="points">
-            <label for="point-value">${{q.point_value}}</label>
-        </div>
-       
-        <div class="form-check">
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="{{q.question}}" id="gridRadios1" value="option1"
-                    checked>
-                <label class="form-check-label" for="gridRadios1">
-                    {{q.op1}}
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="{{q.question}}" id="gridRadios2" value="option2">
-                <label class="form-check-label" for="gridRadios2">
-                    {{q.op2}}
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="{{q.question}}" id="gridRadios1" value="option3">
-                <label class="form-check-label" for="gridRadios1">
-                    {{q.op3}}
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="{{q.question}}" id="gridRadios2" value="option4">
-                <label class="form-check-label" for="gridRadios2">
-                    {{q.op4}}
-                </label>
-            </div>
-            <button type="button" class="btn btn-primary">50/50</button>
-            <button type="button" class="btn btn-primary">Phone a Friend</button>
-            <br>
-        </div>
-        {% endfor %}
-        <input id='timer' type='hidden' name="timer" value="">
-        <br>
-        <button type="submit" class="btn submit btn-primary">Submit</button>
-    </form>
-    {% block script %}
-    <script>
-        console.log('hello world')
-        const timer = document.getElementById('displaytimer')
-        console.log(timer.textContent)
-        const inputtag = document.getElementById('timer')
-
-        t = 0
-        setInterval(() => {
-            t += 1
-            timer.innerHTML = "<b>Timer: " + t + " seconds</b>"
-            inputtag.value = t
-        }, 1000)
-    </script>
-    {% endblock script %}
-
+		t = 0;
+		setInterval(() => {
+			t += 1;
+			timer.innerHTML = "<b>Timer: " + t + " seconds</b>";
+			inputtag.value = t;
+		}, 1000);
+	</script>
+	{% endblock script %}
 </div>
 {% endblock %}
