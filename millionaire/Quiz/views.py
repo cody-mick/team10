@@ -101,3 +101,12 @@ def loginPage(request):
 def logoutPage(request):
     logout(request)
     return redirect('/')
+
+#phone a friend function
+def phone_friend(request):
+    print("hint")
+    return HttpResponse("""<html><script>console.log("Hi!")</script></html>""")
+
+#50/50 function
+def fifty_fifty_lifeline(request):
+    print("50_50")
