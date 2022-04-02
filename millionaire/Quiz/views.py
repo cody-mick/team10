@@ -18,15 +18,12 @@ def home(request):
     if request.method == 'POST':
         score = 0
         page_question = paginator.page(1).object_list
-        print(page_question)
         for q in page_question:
-            # print(q.ans)
-            # print(q.point_value)
-            # print(request.POST.get(q.question))
-            # print(q)
+            print(request.POST.get(q.question))
             if q.ans == request.POST.get(q.question):
                 score=q.point_value
-        
+
+            print(score)
             return render(request, 'Quiz/home.html', {'page_obj': page_obj})
     else:
         return render(request, 'Quiz/home.html', {'page_obj': page_obj})
