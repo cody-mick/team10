@@ -1,17 +1,6 @@
 # Overview
 
-This project was created for the purpose of helping educators find fun ways to
-review material. We worked as a team to design a game that is customizable, fun,
-and competitive.
 
-The software is like Who Wants to be a Millionaire TV game show. You quiz one
-person or team at a time and see who can get the highest points. The first few
-questions are timed, and then after question 7 the questions get harder so there
-is no timer. There are two options for hints (phone a friend and 50/50)
-and each team only gets 2 of each hint. 50/50 removes half of the answers to
-narrow down the answer options.
-
-To start the program.....
 
 # Development Environment
 
