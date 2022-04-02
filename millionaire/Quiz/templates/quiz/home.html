@@ -12,7 +12,7 @@
 			<label for="question">{{question}}</label>
 		</div>
 		<div>
-			<label for="point-value">${{question.point_value}}</label>
+			<label for="point-value">Question Worth: ${{question.point_value}}</label>
 		</div>
 		<button
 			type="button"
@@ -24,6 +24,7 @@
 		<button type="button" action="/phone_friend" class="btn btn-primary">
 			Phone a Friend
 		</button>
+		<p>Current Winnings: ${{score}}</p>
 		<div class="form-check">
 			<div class="form-check">
 				<input

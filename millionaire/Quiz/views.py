@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.shortcuts import redirect, render
 from django.contrib.auth import login,logout,authenticate
 from .forms import *
@@ -10,21 +11,46 @@ from django.core.paginator import Paginator
 def home(request):
     question_list = QuesModel.objects.all()
     paginator = Paginator(question_list, 1) # Show one question per page
+    #initial_page_number = 1
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
+    score = 0
+    correct = 0
 
     # Get current question and evaluate user input for correct answer
     
     if request.method == 'POST':
-        score = 0
-        page_question = paginator.page(1).object_list
+        if page_number == None:
+            page_number = 1
+        else:
+            page_number = request.GET.get('page')
+            
+        page_question = paginator.page(page_number).object_list
         for q in page_question:
+            print(q.ans)
             print(request.POST.get(q.question))
             if q.ans == request.POST.get(q.question):
+                correct += 1
+                print("correct")
                 score=q.point_value
-
+                if score == 1000000:
+                    context = {
+                        'score': score,
+                        'correct': correct
+                    }
+                    return render(request, 'Quiz/result.html', context)
+            else:
+                context = {
+                    'score': score,
+                    'correct': correct
+                }
+                return render(request, 'Quiz/result.html', context)
             print(score)
-            return render(request, 'Quiz/home.html', {'page_obj': page_obj})
+            context = {
+                'page_obj': page_obj,
+                'score': score
+            }
+            return render(request, 'Quiz/home.html', context)
     else:
         return render(request, 'Quiz/home.html', {'page_obj': page_obj})
     # if request.method == 'POST':
