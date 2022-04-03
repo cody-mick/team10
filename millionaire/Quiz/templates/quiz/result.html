@@ -3,7 +3,7 @@
 <style>
 	.shapeone {
 		color: transparent;
-		opacity: 0.7;
+		opacity: 0.4;
 		text-shadow: 0 0 20px #EBD048;
 		mix-blend-mode: multiply;
 		font: bolder 520pt/520pt monospace;
@@ -23,7 +23,7 @@
 
 	.shapetwo {
 		color: transparent;
-		opacity: 0.5;
+		opacity: 0.4;
 		text-shadow: 0 0 20px #EBD048;
 		mix-blend-mode: multiply;
 		font: 400pt/400pt monospace;
@@ -133,15 +133,26 @@
 	}
 
 	.card-img-top {
+		margin-top: 2em;
 		width: 100%;
 	}
 
 	.card {
 		background-color: transparent;
+		margin-right: auto;
+		margin-left: auto;
+		width: 50%;
 	}
-
+	.card-body {
+		color: white;
+	}
+	.card-title{
+		font-size: xxx-large;
+		text-align: center;
+	}
 	.container {
-		margin: 0;
+		margin-right: auto;
+		margin-left: auto;
 	}
 </style>
 
@@ -153,10 +164,6 @@
 				alt="Card image cap">
 			<div class="card-body">
 				<h3 class="card-title">Total Money Earned: ${{score}}</h3>
-
-				<p class="card-text">Correct answers: {{correct}}</p>
-				<p class="card-text">Incorrect answers: {{wrong}}</p>
-				<p class="card-text">Total questions: {{total}}</p>
 			</div>
 		</div>
 	</div>
