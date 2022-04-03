@@ -166,18 +166,28 @@
 		color: #050543;
 		padding: 10px;
 		margin: auto;
-		float: right;
 		margin-left: 5px;
 		font-size: large;
 		border-radius: 20px;
+		text-align: center;
+		width: 75%;
+		margin-right: auto;
+		margin-left: auto;
 	}
 	.score-title {
 		text-align: center;
 	}
+	.restart{
+		float: right;
+		margin-top: 10px;
+		border: #050543;
+		color:#050543;
+		background-color:#bd8e24;
+	}
 </style>
 
 <div class="container">
-	<a class="btn btn-primary" href="{% url 'home' %}">Restart</a>
+	<a class="restart btn btn-primary" href="{% url 'home' %}">RESTART GAME</a>
 	<div class="card-columns">
 		<div class="card" align="centre " style="width: 25em">
 			<img
