@@ -17,7 +17,7 @@ The app was developed using Python Django and model libraries.
 # Collaborators
 
 - Brayden Jones
-- Cody Mickelsen 
+- Cody Mickelsen
 - Tianna DeSpain tiannadespain@gmail.com
 
 # Useful Websites
@@ -29,6 +29,7 @@ The app was developed using Python Django and model libraries.
 - [jsfiddle.net](https://jsfiddle.net/Mottie/sML8b/)
 - [CSS Tricks](https://css-tricks.com/css-dappled-light-effect/)
 - [SQlite Documentation](https://www.sqlite.org/docs.html)
+- [Django Paginate Documentation](https://docs.djangoproject.com/en/4.0/topics/pagination/)
 
 # Future Work
 
