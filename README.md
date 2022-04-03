@@ -26,13 +26,14 @@ The app was developed using Python Django and model libraries.
 - [Youtube - CS Dojo](https://www.youtube.com/watch?v=h7rvyDK70FA&list=PLBZBJbE_rGRXBhJNdKbN7IUy-ctlOFxA1&index=2)
 - [Django Documentation](https://docs.djangoproject.com/en/4.0/topics/db/models/)
 - [Data Flair - Django Tutorial](https://data-flair.training/blogs/create-quiz-application-python-django/)
-- [StackOverflow - timer implementation](https://stackoverflow.com/questions/10603409/how-to-implement-countdown-timer-in-django)
-- [Soundboard - Millionaire Sounds](https://www.soundboard.com/sb/onemilliondollars)
+- [StackOverflow - JS Timer Question](https://stackoverflow.com/questions/10603409/how-to-implement-countdown-timer-in-django)
 - [jsfiddle.net](https://jsfiddle.net/Mottie/sML8b/)
+- [CSS Tricks] (https://css-tricks.com/css-dappled-light-effect/)
+- [SQlite Documentation](https://www.sqlite.org/docs.html)
 
 # Future Work
 
-- Add sounds using soundboard above
+- Add sounds using [Soundboard](https://www.soundboard.com/sb/onemilliondollars)
 - Animate Lights to imitate the gameshow's wrong answer response
 - Add a consequence to the timer running out
 - Make app loop to allow for mulitiple teams in the same run of play
