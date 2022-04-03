@@ -17,9 +17,9 @@ The app was developed using Python Django and model libraries.
 
 # Collaborators
 
--Brayden Jones
--Cody Mickelsen
--Tianna DeSpain tiannadespain@gmail.com
+- Brayden Jones
+- Cody Mickelsen
+- Tianna DeSpain tiannadespain@gmail.com
 
 # Useful Websites
 
