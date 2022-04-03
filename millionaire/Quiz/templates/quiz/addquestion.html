@@ -1,7 +1,44 @@
 {% extends 'Quiz/dependencies.html' %}
  
 {% block content %}
- 
+<style>
+	.btn {
+		background-color: #4d96bf;
+		border-color: #a3e6ff;
+		color: #d4f1fd;
+		margin: auto;
+		margin-left: 5px;
+	}
+
+	.btn:hover {
+		background-color: #7631f0;
+	}
+
+	.points {
+		float: right;
+	}
+
+	.card {
+        background-color: #050543;
+		padding: 0%;
+		margin: 0;
+        border: none;
+	}
+
+	.jumbotron {
+		float: none;
+		padding: 15px 40px;
+		background-color: #050543;
+		border-color: #ffe884;
+		color: #bd8e24;
+		font-weight: 900;
+		font-size: x-large;
+	}
+
+	.form-check-input {
+		accent-color: #bd8e24;
+	}
+</style>
 <div class="jumbotron container row">
     <div class="col-md-6">
         <h1>Add Question</h1>
@@ -10,7 +47,7 @@
               {% csrf_token %}
                 {{form.as_p}}
                 <br>
-             <input type="submit" name="Submit">
+             <input type="submit" class="btn" name="Submit">
              </form>
             </div>
         </div>
