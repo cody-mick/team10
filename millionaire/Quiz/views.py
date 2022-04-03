@@ -139,6 +139,6 @@ def logoutPage(request):
 #     return HttpResponse("""<html><script>console.log("Hi!")</script></html>""")
 
 
-# 50/50 function
-def fifty_fifty_lifeline(request):
-    print("50_50")
+# # 50/50 function
+# def fifty_fifty_lifeline(request):
+#     print("50_50")
