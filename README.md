@@ -17,9 +17,9 @@ The app was developed using Python Django and model libraries.
 
 # Collaborators
 
-Brayden Jones
-Cody Mickelsen
-Tianna DeSpain
+-Brayden Jones
+-Cody Mickelsen
+-Tianna DeSpain tiannadespain@gmail.com
 
 # Useful Websites
 
@@ -31,6 +31,7 @@ Tianna DeSpain
 
 # Future Work
 
-- Create a High Score List
+- Add sounds using soundboard above
 - Animate Lights to imitate the gameshow's wrong answer response
+- Add a consequence to the timer running out
 - Make app loop to allow for mulitiple teams in the same run of play
