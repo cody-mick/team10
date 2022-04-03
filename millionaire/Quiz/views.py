@@ -65,7 +65,19 @@ def home(request):
             }
             return render(request, 'Quiz/home.html', context)
     else:
-        return render(request, 'Quiz/home.html', {'page_obj': page_obj})
+        if page_number == None or page_number == 1:
+            page_number = 1
+            score = 0
+        else:
+            page_number = request.GET.get('page')
+        page_question = paginator.page(page_number).object_list
+        for q in page_question:
+            hint = q.hint
+        context = {
+            'page_obj': page_obj,
+            'hint': hint
+        }
+        return render(request, 'Quiz/home.html', context)
 
 
 def addQuestion(request):
