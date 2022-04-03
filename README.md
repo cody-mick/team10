@@ -2,7 +2,7 @@
 
 We created this project to help educators find fun ways to review material. We worked as a team to design a game that is customizable, fun, and competitive.
 
-We model the software off the game show “Who Wants to be a Millionaire?” It is to be played as individuals or teams who each play the game individually and compare scores in the end. Each time a player answers a question correctly, they lock in the new monetary value (point/score). There is a timer on each question for 60 seconds each. If the player runs out of time, or they answer a question incorrectly, their game will end, with only the last locked in score preserved. Phone a friend with reveal a hint from the database if the player does not know the answer to the question.
+We model the software off the game show “Who Wants to be a Millionaire?” It is to be played as individuals or teams who each play the game individually and compare scores in the end. Each time a player answers a question correctly, they lock in the new monetary value (point/score). There is a timer on each question for 60 seconds each. If the player answers a question incorrectly, their game will end, with only the last locked in score preserved. Phone a friend with reveal a hint from the database if the player does not know the answer to the question.
 
 To start the program, you must have Django installed, then inside the outer directory “millionaire” run “py manage.py runserver” and follow the link to the site.
 
