@@ -28,6 +28,7 @@ The app was developed using Python Django and model libraries.
 - [Data Flair - Django Tutorial](https://data-flair.training/blogs/create-quiz-application-python-django/)
 - [StackOverflow - timer implementation](https://stackoverflow.com/questions/10603409/how-to-implement-countdown-timer-in-django)
 - [Soundboard - Millionaire Sounds](https://www.soundboard.com/sb/onemilliondollars)
+- [jsfiddle.net](https://jsfiddle.net/Mottie/sML8b/)
 
 # Future Work
 
