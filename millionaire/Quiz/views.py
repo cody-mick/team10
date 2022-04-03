@@ -8,7 +8,7 @@ from django.core.paginator import Paginator
 
 # Create your views here.
 def home(request):
-    question_list = QuesModel.objects.all()
+    question_list = QuesModel.objects.all()[:15]
     paginator = Paginator(question_list, 1)  # Show one question per page
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
