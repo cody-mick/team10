@@ -56,13 +56,6 @@
 		<div>
 			<label for="point-value">${{question.point_value}}</label>
 		</div>
-		<button
-			type="button"
-			action="/fifty_fifty_lifeline"
-			class="btn btn-primary"
-		>
-			50/50
-		</button>
 		<div class="form-check">
 			<div class="form-check">
 				<input
@@ -115,6 +108,8 @@
 			<br />
 		</div>
 		<br />
+		<div id="hint"></div>
+		<br />
 		<button type="submit" class="btn btn-primary">Lock In Answer</button>
 
 		{% endfor %}
@@ -165,9 +160,8 @@
 			// $(".answer-btn").attr("disabled", trivia.isPaused); //disable answer buttons when paused.
 		}
 
-		function getHint() {
-			hint = document.getElementById("hint");
-			hint.innerHTML = "{{hint}}";
+		function showHint() {
+			document.getElementById("hint").innerHTML = "{{hint}}";
 		}
 	</script>
 	{% endblock script %}
