@@ -9,53 +9,63 @@ from django.core.paginator import Paginator
 # Create your views here.
 def home(request):
     question_list = QuesModel.objects.all()
-    paginator = Paginator(question_list, 1)  # Show one question per page
-    page_number = request.GET.get("page")
+    paginator = Paginator(question_list, 1) # Show one question per page
+    page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-
-    # Get current question and evaluate user input for correct answer
-
-    if request.method == "POST":
-        score = 0
-        page_question = paginator.page(1).object_list
-        context = {}
+    score = 0
+    correct = 0
+    message = ""
+    
+    if request.method == 'POST':
+        if page_number == None or page_number == 1:
+            page_number = 1
+            score = 0
+        else:
+            page_number = request.GET.get('page')
+            previous_page = paginator.get_page(page_number).previous_page_number()
+            previous_page_obj = paginator.get_page(previous_page)
+            for q in previous_page_obj:
+                score = q.point_value
+            
+        page_question = paginator.page(page_number).object_list
         for q in page_question:
+            print(q.ans)
             print(request.POST.get(q.question))
             if q.ans == request.POST.get(q.question):
-                score = q.point_value
-
+                correct += 1
+                message = "Correct! Please click next."
+                score=q.point_value
+                if score == 1000000:
+                    context = {
+                        'score': score,
+                        'correct': correct
+                    }
+                    return render(request, 'Quiz/result.html', context)
+            else:
+                score = score
+                save_score = Scores(score=score)
+                save_score.save()
+                scores = Scores.objects.filter(score__gt=0)
+                score_list = []
+                for s in scores:
+                    score_list.append(s.score)
+                score_list.sort(reverse=True)
+                print(score_list)
+                context = {
+                    'score': score,
+                    'correct': correct,
+                    'score_list': score_list
+                }
+                return render(request, 'Quiz/result.html', context)
             print(score)
-            return render(request, "Quiz/result.html", context)
+            context = {
+                'page_obj': page_obj,
+                'message': message,
+                'score': score
+            }
+            return render(request, 'Quiz/home.html', context)
     else:
-        return render(request, "Quiz/home.html", {"page_obj": page_obj})
-    # if request.method == 'POST':
-    #     print(request.POST)
-    #     questions=QuesModel.objects.all()
-    #     print(type(questions))
-    #     score=0
-    #     wrong=0
-    #     correct=0
-    #     total=0
-    #     for q in questions:
-    #          total+=1
-    #          if q.ans == request.POST.get(q.question):
-    #              score=q.point_value
-    #              correct+=1
-    #          else:
-    #              wrong+=1
-    #     context = {
-    #         'score':score,
-    #         'correct':correct,
-    #         'wrong':wrong,
-    #         'total':total
-    #     }
-    #     return render(request,'Quiz/result.html',context)
-    # else:
-    #     questions = QuesModel.objects.all()
-    #     context = {
-    #         'question': questions
-    #     }
-    #     return render(request, 'Quiz/home.html', context)
+        return render(request, 'Quiz/home.html', {'page_obj': page_obj})
 
 
 def addQuestion(request):

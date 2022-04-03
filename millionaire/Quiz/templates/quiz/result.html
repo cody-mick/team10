@@ -4,7 +4,7 @@
 	.shapeone {
 		color: transparent;
 		opacity: 0.4;
-		text-shadow: 0 0 20px #EBD048;
+		text-shadow: 0 0 20px #ebd048;
 		mix-blend-mode: multiply;
 		font: bolder 520pt/520pt monospace;
 		padding: 100px;
@@ -24,7 +24,7 @@
 	.shapetwo {
 		color: transparent;
 		opacity: 0.4;
-		text-shadow: 0 0 20px #EBD048;
+		text-shadow: 0 0 20px #ebd048;
 		mix-blend-mode: multiply;
 		font: 400pt/400pt monospace;
 		padding: 100px;
@@ -38,13 +38,12 @@
 		animation-duration: 5000ms;
 		animation-iteration-count: infinite;
 		animation-timing-function: ease-in-out;
-
 	}
 
 	.shapethree {
 		color: transparent;
 		opacity: 0.4;
-		text-shadow: 0 0 20px #EBD048;
+		text-shadow: 0 0 20px #ebd048;
 		mix-blend-mode: multiply;
 		font: 500pt/400pt monospace;
 		padding: 300px;
@@ -58,7 +57,6 @@
 		animation-duration: 7000ms;
 		animation-iteration-count: infinite;
 		animation-timing-function: linear;
-
 	}
 
 	@keyframes move {
@@ -111,7 +109,7 @@
 		}
 	}
 
-	.backdrop>* {
+	.backdrop > * {
 		position: absolute;
 		z-index: 100;
 	}
@@ -122,7 +120,7 @@
 		border-radius: 90px;
 		filter: brightness(2);
 		cursor: default;
-		opacity: .75;
+		opacity: 0.75;
 	}
 
 	div.card-columns {
@@ -146,7 +144,7 @@
 	.card-body {
 		color: white;
 	}
-	.card-title{
+	.card-title {
 		font-size: xxx-large;
 		text-align: center;
 	}
@@ -159,11 +157,20 @@
 <div class="container">
 	<div class="card-columns">
 		<div class="card" align="centre " style="width: 25em">
-			<img class="card-img-top"
+			<img
+				class="card-img-top"
 				src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Money_Cash.jpg/800px-Money_Cash.jpg?20100914121731"
-				alt="Card image cap">
+				alt="Card image cap"
+			/>
 			<div class="card-body">
 				<h3 class="card-title">Total Money Earned: ${{score}}</h3>
+			</div>
+			<div class="high-scores">
+				<h3>Scoreboard</h3>
+				<p>How did you stack up?</p>
+				{% for score in score_list %}
+				<p>{{score}}</p>
+				{% endfor %}
 			</div>
 		</div>
 	</div>
@@ -172,7 +179,6 @@
 		<p class="shapetwo">⚫</p>
 		<p class="shapethree">⚫</p>
 	</div>
-
 </div>
 
 {% endblock %}
