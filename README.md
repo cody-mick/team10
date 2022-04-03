@@ -28,7 +28,7 @@ The app was developed using Python Django and model libraries.
 - [Data Flair - Django Tutorial](https://data-flair.training/blogs/create-quiz-application-python-django/)
 - [StackOverflow - JS Timer Question](https://stackoverflow.com/questions/10603409/how-to-implement-countdown-timer-in-django)
 - [jsfiddle.net](https://jsfiddle.net/Mottie/sML8b/)
-- [CSS Tricks] (https://css-tricks.com/css-dappled-light-effect/)
+- [CSS Tricks](https://css-tricks.com/css-dappled-light-effect/)
 - [SQlite Documentation](https://www.sqlite.org/docs.html)
 
 # Future Work
