@@ -8,7 +8,7 @@
 		mix-blend-mode: multiply;
 		font: bolder 520pt/520pt monospace;
 		padding: 100px;
-		margin-top: -500px;
+		margin-top: -700px;
 		margin-left: 200px;
 		user-select: none;
 		-webkit-user-select: none;
@@ -28,7 +28,7 @@
 		mix-blend-mode: multiply;
 		font: 400pt/400pt monospace;
 		padding: 100px;
-		margin-top: -200px;
+		margin-top: -400px;
 		margin-left: -200px;
 		user-select: none;
 		-webkit-user-select: none;
@@ -47,8 +47,8 @@
 		mix-blend-mode: multiply;
 		font: 500pt/400pt monospace;
 		padding: 300px;
-		margin-top: -850px;
-		margin-left: -500px;
+		margin-top: -950px;
+		margin-left: -600px;
 		user-select: none;
 		-webkit-user-select: none;
 		-moz-user-select: none;
@@ -152,6 +152,28 @@
 		margin-right: auto;
 		margin-left: auto;
 	}
+	.btn {
+		background-color: #4D96BF;
+		border-color: #a3e6ff;
+		color: #d4f1fd;
+		margin: auto;
+		float: right;
+		margin-left: 5px;
+	}
+	.high-scores{
+		background-color: #4D96BF;
+		border-color: #a3e6ff;
+		color: #050543;
+		padding: 10px;
+		margin: auto;
+		float: right;
+		margin-left: 5px;
+		font-size: large;
+		border-radius: 20px;
+	}
+	.score-title{
+		text-align: center;
+	}
 </style>
 
 <div class="container">
@@ -165,9 +187,10 @@
 			<div class="card-body">
 				<h3 class="card-title">Total Money Earned: ${{score}}</h3>
 			</div>
-			<div class="high-scores">
-				<h3>Scoreboard</h3>
+			<div class="high-scores" >
+				<h3 class= "score-title">Scoreboard</h3>
 				<p>How did you stack up?</p>
+				<hr class="solid">
 				{% for score in score_list %}
 				<p>{{score}}</p>
 				{% endfor %}
@@ -180,5 +203,6 @@
 		<p class="shapethree">⚫</p>
 	</div>
 </div>
+<a class="nav-link" href="{% url 'home' %}">Home</a>
 
 {% endblock %}

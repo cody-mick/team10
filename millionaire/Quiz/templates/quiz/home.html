@@ -41,7 +41,13 @@
 
 	<div align="right " id="displaytimer"><b>Timer: 0 seconds</b></div>
 	<button id="pause-game" class="btn btn-primary" onclick="togglePause();">Pause</button>
-
+	<button type="button" action="/fifty_fifty_lifeline" class="btn btn-primary">
+		50/50
+	</button>
+	<button type="button" class="btn btn-primary" onclick="showHint();">
+		Phone a Friend
+	</button>
+	
 	{% for question in page_obj %}
 	<form method="post" action="">
 		{% csrf_token %}
@@ -51,12 +57,7 @@
 		<div>
 			<label for="point-value">${{question.point_value}}</label>
 		</div>
-		<button type="button" action="/fifty_fifty_lifeline" class="btn btn-primary">
-			50/50
-		</button>
-		<button type="button" action="/phone_friend" class="btn btn-primary">
-			Phone a Friend
-		</button>
+
 		<div class="form-check">
 			<div class="form-check">
 				<input class="form-check-input" type="radio" name="{{question.question}}" id="gridRadios1"
@@ -88,6 +89,8 @@
 			</div>
 			<br />
 		</div>
+		<br />
+		<div id="hint">	</div>
 		<br />
 		<button type="submit" class="btn btn-primary">Lock In Answer</button>
 
@@ -131,6 +134,10 @@
 			var btnTxt = timer.isPaused ? "Resume" : "Pause";
 			$("#pause-game").html(btnTxt);
 			// $(".answer-btn").attr("disabled", trivia.isPaused); //disable answer buttons when paused.
+		}
+
+		function showHint() {
+			document.getElementById("hint").innerHTML = "{{hint}}"
 		}
 	</script>
 	{% endblock script %}
