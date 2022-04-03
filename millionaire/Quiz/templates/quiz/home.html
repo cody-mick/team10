@@ -113,16 +113,10 @@
 		<button type="submit" class="btn btn-primary">Lock In Answer</button>
 
 		{% endfor %}
-		<imput type="hidden" id="timer" name="timer" value=""></imput>
+		<input type="hidden" id="timer" name="timer" value=""></input>
+		<p>{{message}}</p>
 		<div class="pagination">
 			<span class="step-links">
-				{% if page_obj.has_previous %}
-				<a
-					class="btn btn-primary"
-					href="?page={{ page_obj.previous_page_number }}"
-					>Previous</a
-				>
-				{% endif %}
 				<span class="current">
 					Question {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
 				</span>
