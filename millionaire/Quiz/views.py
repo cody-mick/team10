@@ -38,7 +38,19 @@ def home(request):
                 message = "Correct! Please click next."
                 score = q.point_value
                 if score == 1000000:
-                    context = {"score": score, "correct": correct}
+                    score = score
+                    save_score = Scores(score=score)
+                    save_score.save()
+                    scores = Scores.objects.filter(score__gt=0)
+                    score_list = []
+                    for s in scores:
+                        score_list.append(s.score)
+                        score_list.sort(reverse=True)
+                    context = {
+                        "score": score,
+                        "correct": correct,
+                        "score_list": score_list,
+                    }
                     return render(request, "Quiz/result.html", context)
             else:
                 score = score
@@ -70,15 +82,12 @@ def home(request):
             page_number = 1
             score = 0
         else:
-            page_number = request.GET.get('page')
+            page_number = request.GET.get("page")
         page_question = paginator.page(page_number).object_list
         for q in page_question:
             hint = q.hint
-        context = {
-            'page_obj': page_obj,
-            'hint': hint
-        }
-        return render(request, 'Quiz/home.html', context)
+        context = {"page_obj": page_obj, "hint": hint}
+        return render(request, "Quiz/home.html", context)
 
 
 def addQuestion(request):

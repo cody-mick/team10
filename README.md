@@ -16,8 +16,8 @@ The app was developed using Python Django and model libraries.
 
 # Collaborators
 
-- Brayden Jones
-- Cody Mickelsen
+- Brayden Jones jon20015@byui.edu
+- Cody Mickelsen cody.b.mick@gmail.com
 - Tianna DeSpain tiannadespain@gmail.com
 
 # Useful Websites
@@ -39,3 +39,4 @@ The app was developed using Python Django and model libraries.
 - Make app loop to allow for mulitiple teams in the same run of play
 - Add 50/50 lifeline functionality
 - Add limit on lifelines
+- Shuffle Questions

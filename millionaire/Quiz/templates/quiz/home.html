@@ -43,7 +43,7 @@
 	<button id="pause-game" class="btn btn-primary" onclick="togglePause();">
 		Pause
 	</button>
-	<button type="button" onclick="getHint();" class="btn btn-primary" id="hint">
+	<button type="button" onclick="getHint();" class="btn btn-primary">
 		Phone a Friend
 	</button>
 
@@ -154,7 +154,7 @@
 			// $(".answer-btn").attr("disabled", trivia.isPaused); //disable answer buttons when paused.
 		}
 
-		function showHint() {
+		function getHint() {
 			document.getElementById("hint").innerHTML = "{{hint}}";
 		}
 	</script>
