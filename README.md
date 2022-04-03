@@ -6,8 +6,7 @@ We model the software off the game show “Who Wants to be a Millionaire?” It 
 
 To start the program, you must have Django installed, then inside the outer directory “millionaire” run “py manage.py runserver” and follow the link to the site.
 
-To add more questions or edit which questions are used... 
-
+To add more questions, you will need to login as an admin. There is a link in the nav bar that allows you to log in. Once the username and password are entered and validated, a form will appear asking the user for a question and the answer options, as well as the desired hint. The user can then click save and the question will write to the database to be used in the game.
 
 # Development Environment
 

@@ -1,7 +1,7 @@
 {% extends 'Quiz/dependencies.html' %} {% block content %} {% load static %}
 <style>
 	.btn {
-		background-color: #4D96BF;
+		background-color: #4d96bf;
 		border-color: #a3e6ff;
 		color: #d4f1fd;
 		margin: auto;
@@ -10,7 +10,7 @@
 	}
 
 	.btn:hover {
-		background-color: #7631F0;
+		background-color: #7631f0;
 	}
 
 	.points {
@@ -25,29 +25,28 @@
 	.submit {
 		float: none;
 		padding: 15px 40px;
-		background-color: #BD8E24;
-		border-color: #FFE884;
+		background-color: #bd8e24;
+		border-color: #ffe884;
 		color: #050543;
 		font-weight: 900;
 		font-size: x-large;
 	}
 
 	.form-check-input {
-		accent-color: #BD8E24;
+		accent-color: #bd8e24;
 	}
 </style>
 <div class="container">
 	<h1>WHO WANTS TO BE A MILLIONAIRE</h1>
 
 	<div align="right " id="displaytimer"><b>Timer: 0 seconds</b></div>
-	<button id="pause-game" class="btn btn-primary" onclick="togglePause();">Pause</button>
-	<!-- <button type="button" action="/fifty_fifty_lifeline" class="btn btn-primary">
-		50/50
-	</button> -->
-	<button type="button" class="btn btn-primary" onclick="showHint();">
+	<button id="pause-game" class="btn btn-primary" onclick="togglePause();">
+		Pause
+	</button>
+	<button type="button" onclick="getHint();" class="btn btn-primary" id="hint">
 		Phone a Friend
 	</button>
-	
+
 	{% for question in page_obj %}
 	<form method="post" action="">
 		{% csrf_token %}
@@ -57,32 +56,51 @@
 		<div>
 			<label for="point-value">${{question.point_value}}</label>
 		</div>
-
 		<div class="form-check">
 			<div class="form-check">
-				<input class="form-check-input" type="radio" name="{{question.question}}" id="gridRadios1"
-					value="option1" />
+				<input
+					class="form-check-input"
+					type="radio"
+					name="{{question.question}}"
+					id="gridRadios1"
+					value="option1"
+				/>
 				<label class="form-check-label" for="gridRadios1">
 					{{question.op1}}
 				</label>
 			</div>
 			<div class="form-check">
-				<input class="form-check-input" type="radio" name="{{question.question}}" id="gridRadios2"
-					value="option2" />
+				<input
+					class="form-check-input"
+					type="radio"
+					name="{{question.question}}"
+					id="gridRadios2"
+					value="option2"
+				/>
 				<label class="form-check-label" for="gridRadios2">
 					{{question.op2}}
 				</label>
 			</div>
 			<div class="form-check">
-				<input class="form-check-input" type="radio" name="{{question.question}}" id="gridRadios3"
-					value="option3" />
+				<input
+					class="form-check-input"
+					type="radio"
+					name="{{question.question}}"
+					id="gridRadios3"
+					value="option3"
+				/>
 				<label class="form-check-label" for="gridRadios3">
 					{{question.op3}}
 				</label>
 			</div>
 			<div class="form-check">
-				<input class="form-check-input" type="radio" name="{{question.question}}" id="gridRadios4"
-					value="option4" />
+				<input
+					class="form-check-input"
+					type="radio"
+					name="{{question.question}}"
+					id="gridRadios4"
+					value="option4"
+				/>
 				<label class="form-check-label" for="gridRadios4">
 					{{question.op4}}
 				</label>
@@ -90,22 +108,22 @@
 			<br />
 		</div>
 		<br />
-		<div id="hint">	</div>
+		<div id="hint"></div>
 		<br />
 		<button type="submit" class="btn btn-primary">Lock In Answer</button>
 
 		{% endfor %}
-		<imput type="hidden" id="timer" name="timer" value=""></imput>
+		<input type="hidden" id="timer" name="timer" value=""></input>
+		<p>{{message}}</p>
 		<div class="pagination">
 			<span class="step-links">
-				{% if page_obj.has_previous %}
-				<a class="btn btn-primary" href="?page={{ page_obj.previous_page_number }}">Previous</a>
-				{% endif %}
 				<span class="current">
 					Question {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
 				</span>
 				{% if page_obj.has_next %}
-				<a class="btn btn-primary" href="?page={{ page_obj.next_page_number }}">Next</a>
+				<a class="btn btn-primary" href="?page={{ page_obj.next_page_number }}"
+					>Next</a
+				>
 				{% endif %}
 			</span>
 		</div>
@@ -137,7 +155,7 @@
 		}
 
 		function showHint() {
-			document.getElementById("hint").innerHTML = "{{hint}}"
+			document.getElementById("hint").innerHTML = "{{hint}}";
 		}
 	</script>
 	{% endblock script %}

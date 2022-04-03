@@ -70,17 +70,15 @@ def home(request):
             page_number = 1
             score = 0
         else:
-            page_number = request.GET.get("page")
+            page_number = request.GET.get('page')
         page_question = paginator.page(page_number).object_list
         for q in page_question:
             hint = q.hint
         context = {
-            "page_obj": page_obj,
-            "message": message,
-            "score": score,
-            "hint": hint,
+            'page_obj': page_obj,
+            'hint': hint
         }
-        return render(request, "Quiz/home.html", context)
+        return render(request, 'Quiz/home.html', context)
 
 
 def addQuestion(request):
@@ -131,14 +129,3 @@ def loginPage(request):
 def logoutPage(request):
     logout(request)
     return redirect("/")
-
-
-# # phone a friend function
-# def phone_friend(request):
-#     print("hint")
-#     return HttpResponse("""<html><script>console.log("Hi!")</script></html>""")
-
-
-# # 50/50 function
-# def fifty_fifty_lifeline(request):
-#     print("50_50")
