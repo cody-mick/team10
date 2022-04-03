@@ -16,14 +16,20 @@ def home(request):
     page_obj = paginator.get_page(page_number)
     score = 0
     correct = 0
+    message = ""
 
     # Get current question and evaluate user input for correct answer
     
     if request.method == 'POST':
-        if page_number == None:
+        if page_number == None or page_number == 1:
             page_number = 1
+            score = 0
         else:
             page_number = request.GET.get('page')
+            previous_page = paginator.get_page(page_number).previous_page_number()
+            previous_page_obj = paginator.get_page(previous_page)
+            for q in previous_page_obj:
+                score = q.point_value
             
         page_question = paginator.page(page_number).object_list
         for q in page_question:
@@ -31,7 +37,7 @@ def home(request):
             print(request.POST.get(q.question))
             if q.ans == request.POST.get(q.question):
                 correct += 1
-                print("correct")
+                message = "Correct! Please click next."
                 score=q.point_value
                 if score == 1000000:
                     context = {
@@ -40,14 +46,25 @@ def home(request):
                     }
                     return render(request, 'Quiz/result.html', context)
             else:
+                score = score
+                save_score = Scores(score=score)
+                save_score.save()
+                scores = Scores.objects.filter(score__gt=0)
+                score_list = []
+                for s in scores:
+                    score_list.append(s.score)
+                score_list.sort(reverse=True)
+                print(score_list)
                 context = {
                     'score': score,
-                    'correct': correct
+                    'correct': correct,
+                    'score_list': score_list
                 }
                 return render(request, 'Quiz/result.html', context)
             print(score)
             context = {
                 'page_obj': page_obj,
+                'message': message,
                 'score': score
             }
             return render(request, 'Quiz/home.html', context)

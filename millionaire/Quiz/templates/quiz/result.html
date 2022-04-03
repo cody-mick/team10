@@ -20,6 +20,11 @@
 			</div>
 		</div>
 	</div>
+	<div class="high-scores">
+		{% for score in score_list %}
+		<p>{{score}}</p>
+		{% endfor %}
+	</div>
 </div>
 
 {% endblock %}
